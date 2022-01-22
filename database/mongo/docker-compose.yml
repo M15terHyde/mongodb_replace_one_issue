@@ -1,0 +1,30 @@
+version: "3.9"
+
+
+services:
+
+  mongo:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    #environment:
+    #  MONGO_INITDB_ROOT_USERNAME: root
+    #  MONGO_INITDB_ROOT_PASSWORD: password
+    networks:
+      mongo-net:
+        aliases:
+          - mongo
+    ports:
+      - "27017:27017"
+    restart: always
+    volumes:
+      - mongodb_persist:/var/lib/mongodb
+
+
+networks:
+  mongo-net:
+    name: mongo-net
+
+
+volumes:
+  mongodb_persist:

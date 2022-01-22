@@ -1,0 +1,29 @@
+version: "3.9"
+
+
+# Declare new services
+services:
+
+  productsapi:
+    build: 
+      context: ..
+      dockerfile: products/Dockerfile
+    ports:
+      - "80:80"
+    networks:
+      - products-net  # self
+      - mongo-net
+    #restart: always
+    #healthcheck:
+    #  test: curl --fail -s http://localhost:80/hi || exit 1
+    #  interval: 0m10s
+    #  timeout: 3s
+    #  retries: 2
+
+
+# Declare new networks
+networks:
+  products-net:
+  mongo-net:
+    external: true
+    name: mongo-net

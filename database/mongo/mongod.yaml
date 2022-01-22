@@ -1,0 +1,12 @@
+# Source: https://docs.mongodb.com/v4.2/reference/configuration-options/
+
+net:
+  port: 27017
+
+storage:
+   dbPath: /var/lib/mongodb
+   journal:
+      enabled: true
+      commitIntervalMs: 80
+   directoryPerDB: true
+   
